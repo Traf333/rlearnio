@@ -675,6 +675,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fea41bba32d969b513997752735605054bc0dfa92b4c56bf1189f2e174be7a10"
 
 [[package]]
+name = "dotenvy"
+version = "0.15.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1aaf95b3e5c8f23aa320147307562d361db0ae0d51242340f558153b4eb2439b"
+
+[[package]]
 name = "either"
 version = "1.8.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -686,9 +692,9 @@ version = "0.1.0"
 dependencies = [
  "actix-web",
  "diesel",
+ "dotenvy",
  "shuttle-actix-web",
  "shuttle-runtime",
- "shuttle-secrets",
  "tokio",
 ]
 
@@ -1997,17 +2003,6 @@ dependencies = [
  "tower",
  "tracing",
  "tracing-subscriber",
-]
-
-[[package]]
-name = "shuttle-secrets"
-version = "0.16.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7d4d4fba5f919e9b889a55a58a1d27bc5b2a7eb810c9726d974ce9751d59a071"
-dependencies = [
- "async-trait",
- "serde",
- "shuttle-service",
 ]
 
 [[package]]

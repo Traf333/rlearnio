@@ -3,7 +3,8 @@ mod controllers;
 use actix_web::{get, web::ServiceConfig, post, Responder, HttpResponse, web};
 use shuttle_actix_web::ShuttleActixWeb;
 use controllers::talents::talents_routes;
-use shuttle_secrets::SecretStore;
+use dotenvy::dotenv;
+use std::env;
 
 #[get("/")]
 async fn hello_world() -> &'static str {
@@ -19,9 +20,9 @@ async fn api() -> &'static str {
 
 #[shuttle_runtime::main]
 async fn actix_web(
-    #[shuttle_secrets::Secrets] secret_store: SecretStore,
 ) -> ShuttleActixWeb<impl FnOnce(&mut ServiceConfig) + Send + Clone + 'static> {
-    println!("{:?} db", secret_store.get("DATABASE_URL"));
+    // load environment variables from .env file
+    dotenv().expect(".env file not found");
 
     let config = move |cfg: &mut ServiceConfig| {
         cfg
